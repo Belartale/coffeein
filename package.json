@@ -1,0 +1,25 @@
+{
+  "name": "training_bootstrap_1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^5.0.0-alpha2"
+  },
+  "devDependencies": {
+    "normalize.css": "^8.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Belartale/training_bootstrap_1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Belartale/training_bootstrap_1/issues"
+  },
+  "homepage": "https://github.com/Belartale/training_bootstrap_1#readme"
+}
