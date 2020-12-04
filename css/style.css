@@ -1,0 +1,89 @@
+:root {
+	--color_main: #0dcaf0;
+
+	--color_other_red_lg: #250d1e;
+
+	--color_other_blue: #3d5382;
+	--color_other_blue_sm: #3e89ad;
+
+	--card_moving: -1rem 1rem 1rem 0rem rgba(0, 0, 0, 0.3);
+	--card_moving_size: 3rem;
+	--card_moving_size_max: 3.3rem;
+}
+.slide img {
+	height: 100vh;
+	object-fit: cover;
+}
+
+.img-sm {
+	width: 1rem;
+}
+.img-sm-1 {
+	width: 1.3rem;
+}
+
+.card-moving {
+	width: var(--card_moving_size);
+	height: var(--card_moving_size);
+	background-color: rgb(220, 220, 220);
+	position: relative;
+	animation: card-moving-back 0.3s linear;
+	animation-fill-mode: both;
+}
+.card-moving:hover {
+	animation: card-moving 0.3s linear;
+	animation-fill-mode: both;
+}
+@keyframes card-moving {
+	0% {
+		transform: translate(0%, 0%);
+	}
+	100% {
+		transform: translate(10%, -10%) rotate(5deg);
+		box-shadow: var(--card_moving);
+		width: var(--card_moving_size_max);
+		height: var(--card_moving_size_max);
+	}
+}
+@keyframes card-moving-back {
+	0% {
+		box-shadow: var(--card_moving);
+		transform: translate(10%, -10%) rotate(5deg);
+		width: var(--card_moving_size_max);
+		height: var(--card_moving_size_max);
+	}
+	100% {
+		transform: translate(0%, 0%);
+		width: var(--card_moving_size);
+		height: var(--card_moving_size);
+	}
+}
+
+/* цвет текста для SVG */
+.card-moving-color-main:hover svg {
+	color: var(--color_main);
+	transition-duration: 0.3s;
+}
+.card-moving-color-white:hover svg {
+	color: white;
+	transition-duration: 0.3s;
+}
+
+/* цвет ФОНА */
+
+.hover-bg-dark-sm:hover {
+	background-color: rgb(75, 75, 75);
+	transition-duration: 0.3s;
+}
+.hover-bg-blue:hover {
+	background-color: var(--color_other_blue);
+	transition-duration: 0.3s;
+}
+.hover-bg-blue-sm:hover {
+	background-color: var(--color_other_blue_sm);
+	transition-duration: 0.3s;
+}
+.hover-bg-red-lg:hover {
+	background-color: var(--color_other_red_lg);
+	transition-duration: 0.3s;
+}
