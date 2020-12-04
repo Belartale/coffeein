@@ -1,15 +1,6 @@
 {
-  "name": "training_bootstrap_1",
+  "name": "coffeein",
   "version": "1.0.0",
-<<<<<<< HEAD
-  "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "bootstrap": "^5.0.0-alpha2"
-  },
-  "devDependencies": {
-    "normalize.css": "^8.0.1"
-=======
   "description": "I learn bootstrap 5",
   "main": "index.js",
   "dependencies": {
@@ -37,28 +28,23 @@
     "gulp-webp-html": "^1.0.2",
     "gulp-webpcss": "^1.1.1",
     "webp-converter": "^2.2.3"
->>>>>>> develop
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Belartale/training_bootstrap_1.git"
+    "url": "git+https://github.com/Belartale/coffeein.git"
   },
-<<<<<<< HEAD
-  "author": "",
-=======
   "keywords": [
     "leaen",
     "bootstrap",
     "5"
   ],
   "author": "belartale",
->>>>>>> develop
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Belartale/training_bootstrap_1/issues"
+    "url": "https://github.com/Belartale/coffeein/issues"
   },
-  "homepage": "https://github.com/Belartale/training_bootstrap_1#readme"
+  "homepage": "https://github.com/Belartale/coffeein#readme"
 }
