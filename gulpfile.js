@@ -14,6 +14,7 @@ let style = "scss";
 let styleType = "scss";
 let JS = "index";
 let imgTypes = "{jpg, png, svg, gif, ico, webp}";
+let doNotMake = "_";
 
 let path = {
 	build: {
@@ -25,8 +26,14 @@ let path = {
 		plugins: `${project_folder}/plugins/`,
 	},
 	src: {
-		pug: `${source_folder}/*.pug`,
-		html: [`${source_folder}/*.html`, `!${source_folder}/-*.html`],
+		pug: [
+			`${source_folder}/**/*.pug`,
+			`!${source_folder}/**/${doNotMake}*.pug`,
+		],
+		html: [
+			`${source_folder}/**/.html`,
+			`!${source_folder}/**/${doNotMake}*.html`,
+		],
 		css: `${source_folder}/${style}/index.${styleType}`,
 		js: `${source_folder}/js/${JS}.js`,
 		img: `${source_folder}/img/**/*.${imgTypes}`,
@@ -94,7 +101,7 @@ function funPug() {
 			})
 		)
 		.pipe(webphtml())
-		.pipe(dest(source_folder))
+		.pipe(dest(path.build.html))
 		.pipe(browsersync.stream());
 }
 
