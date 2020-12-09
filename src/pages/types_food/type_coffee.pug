@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+html(lang='ua')
+  head
+    include ../parts/_head.pug
+    +head("../../")
+
+  body
+
+    - let linksPages = {main: "../../", delivery: "../"}
+    include ../parts/_header.pug
+    +header(linksPages)
+
+    main
+      section.container.py-5
+        .row.g-5
+          mixin card_type_item()
+            .col-4
+              .card
+                  img.card-img-top(src="asdsd" alt=`` style='height: 12rem')
+                  .card-body
+                    h5.card-title Якобс
+                    p.card-text Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, libero.
+                    p.text-end asdasd
+                    a.btn.btn-primary(href='#') Добавити в кошик
+              
+              //- .card(style='width: 18rem')
+              //-   a.card-link.text-decoration-none.text-dark(href=`asd`)
+              //-     img.card-img-top(src=`asd` alt=`картинка` style='height: 12rem')
+              //-     .card-body
+              //-       h5.card-title.text-center asd
+
+              
+
+
+
+          +card_type_item()
+          +card_type_item()
+          +card_type_item()
+          +card_type_item()
+          +card_type_item()
+          +card_type_item()
+    
+    include ../parts/_footer.pug
+    +footer('../../')
+
+    include ../parts/_scripts.pug
+    +scripts('../../')

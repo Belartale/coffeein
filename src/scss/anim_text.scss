@@ -1,0 +1,55 @@
+.caption__title {
+	min-width: 1px;
+
+	transform: translate(0px, 120%);
+	opacity: 0;
+	transition: all 0.5s ease 0s;
+}
+
+.caption__title.active {
+	transform: translate(0px, 0px);
+	opacity: 1;
+}
+
+/* ***************** */
+
+.caption__text {
+	min-width: 1px;
+
+	overflow: hidden;
+
+	transform: translate(0px, 120%);
+	opacity: 0;
+	transition: all 0.5s ease 0s;
+}
+
+.caption__text.active {
+	transform: translate(0px, 0px);
+	opacity: 1;
+	transition: all 0.5s ease 0.4s;
+}
+
+/* ***************** */
+
+.anim_show {
+	transform: translate(0px, 120%);
+	opacity: 0;
+	transition: all 0.5s ease 0s;
+}
+
+.anim_show.active,
+.active .anim_show {
+	transform: translate(0px, 0px);
+	opacity: 1;
+}
+
+/* ***************** */
+
+.img {
+	transform: scale(0);
+	transition: all 0.5s ease 0s;
+}
+
+.card__item.active .img {
+	transform: scale(1);
+}

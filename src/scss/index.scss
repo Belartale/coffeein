@@ -1,4 +1,5 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
+@import "./anim_text.scss";
 
 :root {
 	--color_main: #0dcaf0;
@@ -13,7 +14,7 @@
 	--card_moving_size_max: 3.3rem;
 }
 .slide img {
-	height: 100vh;
+	height: calc(100vh - 56px);
 	object-fit: cover;
 }
 
