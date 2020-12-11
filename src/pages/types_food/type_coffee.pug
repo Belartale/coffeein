@@ -13,15 +13,18 @@ html(lang='ua')
     main
       section.container.py-5
         .row.g-5
-          mixin card_type_item()
+          mixin card_type_item(title, cost, text, pathImg)
             .col-4
               .card
-                  img.card-img-top(src="asdsd" alt=`` style='height: 12rem')
+                  img.img.img--cover.card-img-top(src=`../../img/type_coffee/${pathImg}` alt=`${title} img` style='height: 12rem; width: 12rem;')
                   .card-body
-                    h5.card-title Якобс
-                    p.card-text Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, libero.
-                    p.text-end asdasd
-                    a.btn.btn-primary(href='#') Добавити в кошик
+                    h5.card-title #{title}
+                    p.card-text #{text}
+                    .row
+                      .col
+                        p.text-end #{cost}грн.
+                      .col
+                        a.btn.btn-primary(href='#') Добавити в кошик
               
               //- .card(style='width: 18rem')
               //-   a.card-link.text-decoration-none.text-dark(href=`asd`)
@@ -32,13 +35,9 @@ html(lang='ua')
               
 
 
-
-          +card_type_item()
-          +card_type_item()
-          +card_type_item()
-          +card_type_item()
-          +card_type_item()
-          +card_type_item()
+          +card_type_item("Якобс", "100", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "img_jacobs.jpg")
+          +card_type_item("Якобс2", "110", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", testImg)
+          
     
     include ../parts/_footer.pug
     +footer('../../')

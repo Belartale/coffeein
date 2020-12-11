@@ -45,11 +45,11 @@
 
 /* ***************** */
 
-.img {
+.img_anim {
 	transform: scale(0);
 	transition: all 0.5s ease 0s;
 }
 
-.card__item.active .img {
+.card__item.active .img_anim {
 	transform: scale(1);
 }

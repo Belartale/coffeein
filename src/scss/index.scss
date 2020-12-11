@@ -18,6 +18,12 @@
 	object-fit: cover;
 }
 
+.img {
+	&--cover {
+		object-fit: cover;
+	}
+}
+
 .img-sm {
 	width: 1rem;
 }
