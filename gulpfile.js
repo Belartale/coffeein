@@ -3,18 +3,21 @@
 
 // npm i -D gulp-
 
+// task for start
+// gulp s == svg sprite
+// gulp f == font
+// gulp d == delete class inside css of html
+
 let project_folder = "dist"; //require("path").basename(__dirname);
 let source_folder = "src"; //"#src";
 
-let fs = require("fs");
-
 //! file paths
 
-let style = "scss";
-let styleType = "scss";
-let JS = "index";
-let imgTypes = "{jpg, png, svg, gif, ico, webp}";
-let doNotMake = "_";
+let style = `scss`;
+let styleType = `scss`;
+let JS = `index`;
+let imgTypes = `*`; //? `{jpg, png, svg, gif, ico, webp}`;
+let doNotMake = `_`;
 
 let path = {
 	build: {
@@ -69,7 +72,7 @@ let { src, dest } = require("gulp"),
 	webp = require("gulp-webp"), // формат webp
 	webphtml = require("gulp-webp-html"), // формат webp для html
 	webpcss = require("gulp-webpcss"), //! replace "gulp-webp-css"
-	svgSprite = require("gulp-svg-sprite"), //
+	svgSprite = require("gulp-svg-sprite"), //?
 	ttf2woff = require("gulp-ttf2woff"), // изменение формата шрифтов
 	ttf2woff2 = require("gulp-ttf2woff2"), //
 	fonter = require("gulp-fonter"),
@@ -213,6 +216,8 @@ gulp.task("d", () => {
 		)
 		.pipe(dest(path.build.css));
 });
+
+let fs = require("fs");
 
 function fontsStyle(params) {
 	let file_content = fs.readFileSync(source_folder + "/scss/fonts.scss");

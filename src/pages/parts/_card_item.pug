@@ -1,0 +1,13 @@
+mixin card_type_item(title, cost, text, pathImg)
+  .col-4
+    .card
+      .d-flex.justify-content-center.p-3
+        img.img.img--cover(src=`../../img/${pathImg}` alt=`${title} img` style='height: 12rem; width: 12rem;')
+      .card-body
+        h5.card-title #{title}
+        p.card-text #{text}
+        .row
+          .col.d-flex.align-items-center
+            p.fst-italic #{cost} грн.
+          .col.d-flex.justify-content-end
+            a.btn.btn-primary(href='#') Купити

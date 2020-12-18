@@ -13,30 +13,19 @@ html(lang='ua')
     main
       section.container.py-5
         .row.g-5
-          mixin card_type_item(title, cost, text, pathImg)
-            .col-4
-              .card
-                  img.img.img--cover.card-img-top(src=`../../img/type_coffee/${pathImg}` alt=`${title} img` style='height: 12rem; width: 12rem;')
-                  .card-body
-                    h5.card-title #{title}
-                    p.card-text #{text}
-                    .row
-                      .col
-                        p.text-end #{cost}грн.
-                      .col
-                        a.btn.btn-primary(href='#') Добавити в кошик
-              
-              //- .card(style='width: 18rem')
-              //-   a.card-link.text-decoration-none.text-dark(href=`asd`)
-              //-     img.card-img-top(src=`asd` alt=`картинка` style='height: 12rem')
-              //-     .card-body
-              //-       h5.card-title.text-center asd
-
-              
-
-
-          +card_type_item("Якобс", "100", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "img_jacobs.jpg")
-          +card_type_item("Якобс2", "110", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", testImg)
+          include ../parts/_card_item.pug
+          +card_type_item("Jacobs", "100", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_coffee/img_jacobs.jpg")
+          +card_type_item("Nescafe", "110", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_coffee/img_nescafe.jpg")
+          +card_type_item("Jacobs", "100", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_coffee/img_jacobs.jpg")
+          +card_type_item("Nescafe", "110", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_coffee/img_nescafe.jpg")
+          +card_type_item("Jacobs", "100", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_coffee/img_jacobs.jpg")
+          +card_type_item("Nescafe", "110", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_coffee/img_nescafe.jpg")
+          +card_type_item("Jacobs", "100", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_coffee/img_jacobs.jpg")
+          +card_type_item("Nescafe", "110", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_coffee/img_nescafe.jpg")
+          +card_type_item("Jacobs", "100", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_coffee/img_jacobs.jpg")
+          +card_type_item("Nescafe", "110", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_coffee/img_nescafe.jpg")
+          +card_type_item("Jacobs", "100", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_coffee/img_jacobs.jpg")
+          +card_type_item("Nescafe", "110", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_coffee/img_nescafe.jpg")
           
     
     include ../parts/_footer.pug

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+html(lang='ua')
+  head
+    include ../parts/_head.pug
+    +head("../../")
+
+  body
+
+    - let linksPages = {main: "../../", delivery: "../"}
+    include ../parts/_header.pug
+    +header(linksPages)
+
+    main
+      section.container.py-5
+        .row.g-5
+          include ../parts/_card_item.pug
+          +card_type_item("Jacobs", "200", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_tea/img_green.png")
+          +card_type_item("Jacobs", "120", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_tea/img_pekoe.png")
+          +card_type_item("Jacobs", "520", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_tea/img_green.png")
+          +card_type_item("Jacobs", "50", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_tea/img_pekoe.png")
+          +card_type_item("Jacobs", "60", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_tea/img_green.png")
+          +card_type_item("Jacobs", "80", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_tea/img_pekoe.png")
+          +card_type_item("Jacobs", "150", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_tea/img_green.png")
+          +card_type_item("Jacobs", "160", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_tea/img_pekoe.png")
+          +card_type_item("Jacobs", "125", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_tea/img_green.png")
+          
+          
+    
+    include ../parts/_footer.pug
+    +footer('../../')
+
+    include ../parts/_scripts.pug
+    +scripts('../../')
