@@ -6,9 +6,19 @@ html(lang='ua')
     
   body
 
-    - let linksPages = {main: "./", delivery: "./pages/"}
+    //- - let typeCoffee = "./pages/types_food/type_coffee.html"
+    //- - let typeTea = "./pages/types_food/type_tea.html" 
+    //- - let typeSyrup = "./pages/types_food/type_syrup.html"
+    //- - let typeSweet = "./pages/types_food/type_sweet.html"
+    //- - let typeTools = "./pages/types_food/type_tools.html"
+    //- - let typeCartonCup = "./pages/types_food/type_carton_cup.html"
+    
+    //- - let linksPagesItems = {typeCoffee: "./pages/types_food/type_coffee.html", typeTea: "./pages/types_food/type_tea.html", typeSyrup: "./pages/types_food/type_syrup.html", typeSweet: "./pages/types_food/type_sweet.html", typeTools: "./pages/types_food/type_tools.html", typeCartonCup: "./pages/types_food/type_carton_cup.html",}
+    - let linksPages = {main: "./", delivery: "./pages/" }
+
+    //- - let linksPages = {main: "./", delivery: "./pages/", typeCoffee: typeCoffee, typeTea: typeTea, typeSyrup: typeSyrup, typeSweet: typeSweet, typeTools: typeTools, typeCartonCup: typeCartonCup}
     include ./pages/parts/_header.pug
-    +header(linksPages)
+    +header(linksPages, "./pages/types_food/", "index")
 
     main
       section
@@ -22,6 +32,8 @@ html(lang='ua')
               img.img-fluid.d-block.w-100(src='img/img_slider_discount_one.png' alt='...')
             .carousel-item
               img.img-fluid.d-block.w-100(src='img/img_slider_discount_two.jpg' alt='...')
+            .carousel-item
+              img.img-fluid.d-block.w-100(src='img/img_slider_discount_three.jpg' alt='...')
           a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-slide='prev')
             span.carousel-control-prev-icon(aria-hidden='true')
             span.visually-hidden Previous
@@ -38,12 +50,12 @@ html(lang='ua')
                   img.card-img-top(src=pathImg alt=`картинка ${title}` )
                   .card-body
                     h5.card-title.text-center #{title}
-          +type_item("Кофе", "./pages/types_food/type_coffee.html", "img/img_type_item_coffee.jpg", "")
-          +type_item("Чай", "./pages/types_food/type_tea.html", "img/img_type_item_tea.jpg", "")
-          +type_item("Сироп", "#", "img/img_type_item_syrup.jpg", "")
-          +type_item("Солодке", "#", "img/img_type_item_sweet.jpg", "")
-          +type_item("Інструменти кофе-варіння", "#", "img/img_type_item_tools.jpg", "")
-          +type_item("Стаканчики і додаткові товари", "#", "img/img_type_item_carton_cup.jpg", "")
+          +type_item("Кофе", typeCoffee, "img/img_type_item_coffee.jpg", "")
+          +type_item("Чай", typeTea, "img/img_type_item_tea.jpg", "")
+          +type_item("Сироп", typeSyrup, "img/img_type_item_syrup.jpg", "")
+          +type_item("Солодке", typeSweet, "img/img_type_item_sweet.jpg", "")
+          +type_item("Інструменти кофе-варіння", typeTools, "img/img_type_item_tools.jpg", "")
+          +type_item("Стаканчики і додаткові товари", typeCartonCup, "img/img_type_item_carton_cup.jpg", "")
 
 
       section.my-5

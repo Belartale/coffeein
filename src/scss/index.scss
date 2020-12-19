@@ -19,8 +19,8 @@
 }
 
 .img {
-	&--cover {
-		object-fit: cover;
+	&--object_contain {
+		object-fit: contain;
 	}
 }
 

@@ -2,7 +2,7 @@ mixin card_type_item(title, cost, text, pathImg)
   .col-4
     .card
       .d-flex.justify-content-center.p-3
-        img.img.img--cover(src=`../../img/${pathImg}` alt=`${title} img` style='height: 12rem; width: 12rem;')
+        img.img.img--object_contain(src=`../../img/${pathImg}` alt=`${title} img` style='height: 12rem; width: 12rem;')
       .card-body
         h5.card-title #{title}
         p.card-text #{text}

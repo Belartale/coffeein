@@ -8,7 +8,7 @@ html(lang='ua')
 
     - let linksPages = {main: "../", delivery: "./"}
     include ./parts/_header.pug
-    +header(linksPages)
+    +header(linksPages, "./types_food/", "delivery")
 
     main
       section.container.py-5
