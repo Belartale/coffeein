@@ -22,23 +22,47 @@ mixin header(linksPages, path, whoPage)
               else
                 a.nav-link(href=`${linksPages.delivery}delivery_item.html`) Доставка на св'ята
 
-            li.nav-item.dropdown
-              a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-expanded='false')
-                | Товари
-              ul.dropdown-menu(aria-labelledby='navbarDropdown')
-                li
-                  a.dropdown-item(href=`${path}type_coffee.html`) Кофе
-                li
-                  a.dropdown-item(href=`${path}type_tea.html`) Чай
-                li
-                  a.dropdown-item(href=`${path}type_syrup.html`) Сироп
-                li
-                  a.dropdown-item(href=`${path}type_sweet.html`) Солодке
-                li
-                  a.dropdown-item(href=`${path}type_tools.html`) Інструменти кофе-варіння
-                li
-                  a.dropdown-item(href=`${path}type_carton_cup.html`) Стаканчики і додаткові товари
-                li
+            mixin item_active(active, whoPageItem)
+              li.nav-item.dropdown
+                a#navbarDropdown.nav-link.dropdown-toggle(class=active href='#' role='button' data-toggle='dropdown' aria-expanded='false')
+                  | Товари
+                ul.dropdown-menu(aria-labelledby='navbarDropdown')
+                  li
+                    if whoPageItem === "type_coffee"
+                      a.dropdown-item.active(href=`${path}type_coffee.html`) Кофе
+                    else
+                      a.dropdown-item(href=`${path}type_coffee.html`) Кофе
+                  li
+                    if whoPageItem === "type_tea"
+                      a.dropdown-item.active(href=`${path}type_tea.html`) Чай
+                    else
+                      a.dropdown-item(href=`${path}type_tea.html`) Чай
+                  li
+                    if whoPageItem === "type_syrup"
+                      a.dropdown-item.active(href=`${path}type_syrup.html`) Сироп
+                    else
+                      a.dropdown-item(href=`${path}type_syrup.html`) Сироп
+                  li
+                    if whoPageItem === "type_sweet"
+                      a.dropdown-item.active(href=`${path}type_sweet.html`) Солодке
+                    else
+                      a.dropdown-item(href=`${path}type_sweet.html`) Солодке
+                  li
+                    if whoPageItem === "type_tools"
+                      a.dropdown-item.active(href=`${path}type_tools.html`) Інструменти кофе-варіння
+                    else
+                      a.dropdown-item(href=`${path}type_tools.html`) Інструменти кофе-варіння
+                  li
+                    if whoPageItem === "type_carton_cup"
+                      a.dropdown-item.active(href=`${path}type_carton_cup.html`) Стаканчики і додаткові товари
+                    else
+                      a.dropdown-item(href=`${path}type_carton_cup.html`) Стаканчики і додаткові товари
+
+            if whoPage === "type_coffee" || whoPage === "type_tea" || whoPage === "type_syrup" || whoPage === "type_sweet" || whoPage === "type_tools" || whoPage === "type_carton_cup"
+              +item_active("active", whoPage)
+            else
+              +item_active
+
             li.nav-item.dropdown
               a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-expanded='false')
                 | Готові набори
