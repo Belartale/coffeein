@@ -39,9 +39,15 @@ let path = {
 		],
 		css: `${source_folder}/${style}/index.${styleType}`,
 		js: `${source_folder}/js/${JS}.js`,
-		img: `${source_folder}/img/**/*.${imgTypes}`,
+		img: [
+			`${source_folder}/img/**/*.${imgTypes}`,
+			`!${source_folder}/img/${doNotMake}**/*`,
+		],
 		fonts: `${source_folder}/fonts/*.ttf`,
-		plugins: `${source_folder}/plugins/**/*.*`,
+		plugins: [
+			`${source_folder}/plugins/**/*.*`,
+			`!${source_folder}/plugins/${doNotMake}**/*.*`,
+		],
 	},
 	watch: {
 		pug: `${source_folder}/**/*.pug`,
@@ -72,7 +78,7 @@ let { src, dest } = require("gulp"),
 	webp = require("gulp-webp"), // формат webp
 	webphtml = require("gulp-webp-html"), // формат webp для html
 	webpcss = require("gulp-webpcss"), //! replace "gulp-webp-css"
-	svgSprite = require("gulp-svg-sprite"), //?
+	svgsprite = require("gulp-svg-sprite"), //?
 	ttf2woff = require("gulp-ttf2woff"), // изменение формата шрифтов
 	ttf2woff2 = require("gulp-ttf2woff2"), //
 	fonter = require("gulp-fonter"),
@@ -182,7 +188,24 @@ function fonts() {
 	return src(path.src.fonts).pipe(ttf2woff2()).pipe(dest(path.build.fonts));
 }
 
-gulp.task("f", function () {
+function svgSprite() {
+	return src([source_folder + "/img/_sprite/*.svg"])
+		.pipe(
+			svgsprite({
+				mode: {
+					stack: {
+						sprite: "../icons/icons.svg",
+						example: true,
+					},
+				},
+			})
+		)
+		.pipe(dest(path.build.img));
+}
+
+gulp.task("s", svgSprite);
+
+function fontToTtf() {
 	return gulp([source_folder + "/fonts/*.otf"])
 		.pipe(
 			fonter({
@@ -190,24 +213,11 @@ gulp.task("f", function () {
 			})
 		)
 		.pipe(dest(source_folder + "/fonts/"));
-});
+}
 
-gulp.task("s", function () {
-	return gulp([source_folder + "/iconsprite/*.svg"])
-		.pipe(
-			svgSprite({
-				mode: {
-					stack: {
-						sprite: "../icons/icons.svg",
-						//? example: true,
-					},
-				},
-			})
-		)
-		.pipe(dest(path.build.img));
-});
+gulp.task("f", fontToTtf);
 
-gulp.task("d", () => {
+function cleanClassOfHtml() {
 	return src([path.build.css + "*.css", path.build.css + "*.min.css"])
 		.pipe(
 			purgecss({
@@ -215,7 +225,9 @@ gulp.task("d", () => {
 			})
 		)
 		.pipe(dest(path.build.css));
-});
+}
+
+gulp.task("d", cleanClassOfHtml);
 
 let fs = require("fs");
 
@@ -249,7 +261,7 @@ function fontsStyle(params) {
 
 function cb() {}
 
-function watchFiles(params) {
+function watchFiles() {
 	gulp.watch([path.watch.pug], funPug);
 	gulp.watch([path.watch.html], html);
 	gulp.watch([path.watch.css], css);
@@ -258,7 +270,7 @@ function watchFiles(params) {
 	gulp.watch([path.watch.plugins], plugins);
 }
 
-function clean(params) {
+function clean() {
 	return del(path.clean);
 }
 
@@ -266,7 +278,7 @@ let build = gulp.series(
 	clean,
 	funPug,
 	plugins,
-	gulp.parallel(css, html, js, images, fonts),
+	gulp.parallel(css, html, js, images, svgSprite, fonts),
 	fontsStyle
 ); //before
 let watch = gulp.parallel(build, browserSync, watchFiles); //after
@@ -276,6 +288,7 @@ exports.plugins = plugins;
 exports.fontsStyle = fontsStyle;
 exports.fonts = fonts;
 exports.images = images;
+exports.svgSprite = svgSprite;
 exports.js = js;
 exports.css = css;
 exports.html = html;
