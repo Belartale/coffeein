@@ -1,6 +1,6 @@
 mixin header(linksPages, path, whoPage)
   - let ifType = whoPage === "type_coffee" || whoPage === "type_tea" || whoPage === "type_syrup" || whoPage === "type_sweet" || whoPage === "type_tools" || whoPage === "type_carton_cup"
-  - let ifPack = whoPage === "pack_coffee" || whoPage === "pack_tea" || whoPage === "pack_syrup" || whoPage === "pack_sweet" || whoPage === "pack_tools" || whoPage === "pack_carton_cup"
+  - let ifPack = whoPage === "pack_coffee" || whoPage === "pack_tools" || whoPage === "pack_tea"
 
   header
     nav.navbar.sticky-top.navbar-expand-md.navbar-dark.bg-dark
@@ -32,11 +32,11 @@ mixin header(linksPages, path, whoPage)
                 ul.dropdown-menu(aria-labelledby="navbarDropdown")
                   li
                     if whoPageItem === "type_coffee"
-                      a.dropdown-item.active(href=`${path}type_coffee.html`) Кофе
+                      a.dropdown-item.active(href=`${path}type_coffee.html`) Кава
                     else if whoPageItem === "pack"
-                      a.dropdown-item(href=`${path}${pathTwo}type_coffee.html`) Кофе
+                      a.dropdown-item(href=`${path}${pathTwo}type_coffee.html`) Кава
                     else
-                      a.dropdown-item(href=`${path}type_coffee.html`) Кофе
+                      a.dropdown-item(href=`${path}type_coffee.html`) Кава
                   li
                     if whoPageItem === "type_tea"
                       a.dropdown-item.active(href=`${path}type_tea.html`) Чай
@@ -60,11 +60,11 @@ mixin header(linksPages, path, whoPage)
                       a.dropdown-item(href=`${path}type_sweet.html`) Солодке
                   li
                     if whoPageItem === "type_tools"
-                      a.dropdown-item.active(href=`${path}type_tools.html`) Інструменти кофе-варіння
+                      a.dropdown-item.active(href=`${path}type_tools.html`) Інструменти кава-варіння
                     else if whoPageItem === "pack"
-                      a.dropdown-item(href=`${path}${pathTwo}type_tools.html`) Інструменти кофе-варіння
+                      a.dropdown-item(href=`${path}${pathTwo}type_tools.html`) Інструменти кава-варіння
                     else
-                      a.dropdown-item(href=`${path}type_tools.html`) Інструменти кофе-варіння
+                      a.dropdown-item(href=`${path}type_tools.html`) Інструменти кава-варіння
                   li
                     if whoPageItem === "type_carton_cup"
                       a.dropdown-item.active(href=`${path}type_carton_cup.html`) Стаканчики і додаткові товари
@@ -90,14 +90,19 @@ mixin header(linksPages, path, whoPage)
                 ul.dropdown-menu(aria-labelledby="navbarDropdown")
                   li
                     if whoPageItem === "pack_coffee"
-                      a.dropdown-item.active(href=`${path}pack_coffee.html`) Набір кофе
+                      a.dropdown-item.active(href=`${path}pack_coffee.html`) Набори кави
                     else
-                      a.dropdown-item(href=`${path}../pack/pack_coffee.html`) Набір кофе
-                  //- li
-                  //-   if whoPageItem === "pack_coffee"
-                  //-     a.dropdown-item.active(href=`${path}pack_coffee.html`) Набір кофе active
-                  //-   else
-                  //-     a.dropdown-item(href=`${path}../pack/pack_coffee.html`) Набір кофе NO active
+                      a.dropdown-item(href=`${path}../pack/pack_coffee.html`) Набори кави
+                  li
+                    if whoPageItem === "pack_tools"
+                      a.dropdown-item.active(href=`${path}pack_tools.html`) Набори бариста
+                    else
+                      a.dropdown-item(href=`${path}../pack/pack_tools.html`) Набори бариста
+                  li
+                    if whoPageItem === "pack_tea"
+                      a.dropdown-item.active(href=`${path}pack_tea.html`) Набори чаїв
+                    else
+                      a.dropdown-item(href=`${path}../pack/pack_tea.html`) Набори чаїв
                   
             if ifPack
               +item_pack("active", whoPage)

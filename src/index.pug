@@ -41,17 +41,17 @@ html(lang='ua')
       section.container.my-5
         .row.g-5
           mixin type_item(title, pathLink, pathImg, altImg)
-            .col-4
+            .col-xs-12.col-sm-6.col-lg-4
               .card
                 a.card-link.text-decoration-none.text-dark(href=`./pages/types_food/${pathLink}`)
-                  img.card-img-top(src=pathImg alt=`картинка ${title}` )
+                  img.card-img-top.img__index(src=pathImg alt=`картинка ${title}`)
                   .card-body
                     h5.card-title.text-center #{title}
-          +type_item("Кофе", "type_coffee.html", "img/img_type_item_coffee.jpg", "")
+          +type_item("Кава", "type_coffee.html", "img/img_type_item_coffee.jpg", "")
           +type_item("Чай", "type_tea.html", "img/img_type_item_tea.jpg", "")
           +type_item("Сироп", "type_syrup.html", "img/img_type_item_syrup.jpg", "")
           +type_item("Солодке", "type_sweet.html", "img/img_type_item_sweet.jpg", "")
-          +type_item("Інструменти кофе-варіння", "type_tools.html", "img/img_type_item_tools.jpg", "")
+          +type_item("Інструменти кава-варіння", "type_tools.html", "img/img_type_item_tools.jpg", "")
           +type_item("Стаканчики і додаткові товари", "type_carton_cup.html", "img/img_type_item_carton_cup.jpg", "")
 
       section.my-5

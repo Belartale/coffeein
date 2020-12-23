@@ -30,6 +30,18 @@
 .img-sm-1 {
 	width: 1.3rem;
 }
+.img__index {
+	@media (min-width: 576px) {
+		& {
+			height: 10rem;
+		}
+	}
+	@media (min-width: 768px) {
+		& {
+			height: 14rem;
+		}
+	}
+}
 
 .card-moving {
 	width: var(--card_moving_size);
