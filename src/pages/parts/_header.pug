@@ -1,80 +1,112 @@
 mixin header(linksPages, path, whoPage)
+  - let ifType = whoPage === "type_coffee" || whoPage === "type_tea" || whoPage === "type_syrup" || whoPage === "type_sweet" || whoPage === "type_tools" || whoPage === "type_carton_cup"
+  - let ifPack = whoPage === "pack_coffee" || whoPage === "pack_tea" || whoPage === "pack_syrup" || whoPage === "pack_sweet" || whoPage === "pack_tools" || whoPage === "pack_carton_cup"
+
   header
     nav.navbar.sticky-top.navbar-expand-md.navbar-dark.bg-dark
       .container
         a.navbar-brand(href=`${linksPages.main}index.html`)
           | Coffe
           span.text-info In
-        button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+        button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
           span.navbar-toggler-icon
         #navbarSupportedContent.collapse.navbar-collapse
           ul.navbar-nav.mr-auto.mb-2.mb-lg-0
 
             li.nav-item
               if whoPage === "index"
-                a.nav-link.active(aria-current='page' href=`${linksPages.main}index.html`) Головна
+                a.nav-link.active(aria-current="page" href=`${linksPages.main}index.html`) Головна
               else
-                a.nav-link(aria-current='page' href=`${linksPages.main}index.html`) Головна
+                a.nav-link(aria-current="page" href=`${linksPages.main}index.html`) Головна
 
             li.n1av-item
               if whoPage === "delivery"
-                a.nav-link.active(href=`${linksPages.delivery}delivery_item.html`) Доставка на св'ята
+                a.nav-link.active(href=`${linksPages.delivery}delivery_item.html`) Доставка на св"ята
               else
-                a.nav-link(href=`${linksPages.delivery}delivery_item.html`) Доставка на св'ята
+                a.nav-link(href=`${linksPages.delivery}delivery_item.html`) Доставка на св"ята
 
-            mixin item_active(active, whoPageItem)
+            mixin item_type(active, whoPageItem, pathTwo)
               li.nav-item.dropdown
-                a#navbarDropdown.nav-link.dropdown-toggle(class=active href='#' role='button' data-toggle='dropdown' aria-expanded='false')
+                a#navbarDropdown.nav-link.dropdown-toggle(class=active href="#" role="button" data-toggle="dropdown" aria-expanded="false")
                   | Товари
-                ul.dropdown-menu(aria-labelledby='navbarDropdown')
+                ul.dropdown-menu(aria-labelledby="navbarDropdown")
                   li
                     if whoPageItem === "type_coffee"
                       a.dropdown-item.active(href=`${path}type_coffee.html`) Кофе
+                    else if whoPageItem === "pack"
+                      a.dropdown-item(href=`${path}${pathTwo}type_coffee.html`) Кофе
                     else
                       a.dropdown-item(href=`${path}type_coffee.html`) Кофе
                   li
                     if whoPageItem === "type_tea"
                       a.dropdown-item.active(href=`${path}type_tea.html`) Чай
+                    else if whoPageItem === "pack"
+                      a.dropdown-item(href=`${path}${pathTwo}type_tea.html`) Чай
                     else
                       a.dropdown-item(href=`${path}type_tea.html`) Чай
                   li
                     if whoPageItem === "type_syrup"
                       a.dropdown-item.active(href=`${path}type_syrup.html`) Сироп
+                    else if whoPageItem === "pack"
+                      a.dropdown-item(href=`${path}${pathTwo}type_syrup.html`) Сироп
                     else
                       a.dropdown-item(href=`${path}type_syrup.html`) Сироп
                   li
                     if whoPageItem === "type_sweet"
                       a.dropdown-item.active(href=`${path}type_sweet.html`) Солодке
+                    else if whoPageItem === "pack"
+                      a.dropdown-item(href=`${path}${pathTwo}type_sweet.html`) Солодке
                     else
                       a.dropdown-item(href=`${path}type_sweet.html`) Солодке
                   li
                     if whoPageItem === "type_tools"
                       a.dropdown-item.active(href=`${path}type_tools.html`) Інструменти кофе-варіння
+                    else if whoPageItem === "pack"
+                      a.dropdown-item(href=`${path}${pathTwo}type_tools.html`) Інструменти кофе-варіння
                     else
                       a.dropdown-item(href=`${path}type_tools.html`) Інструменти кофе-варіння
                   li
                     if whoPageItem === "type_carton_cup"
                       a.dropdown-item.active(href=`${path}type_carton_cup.html`) Стаканчики і додаткові товари
+                    else if whoPageItem === "pack"
+                      a.dropdown-item(href=`${path}${pathTwo}type_carton_cup.html`) Стаканчики і додаткові товари
                     else
                       a.dropdown-item(href=`${path}type_carton_cup.html`) Стаканчики і додаткові товари
-
-            if whoPage === "type_coffee" || whoPage === "type_tea" || whoPage === "type_syrup" || whoPage === "type_sweet" || whoPage === "type_tools" || whoPage === "type_carton_cup"
-              +item_active("active", whoPage)
+            if ifType
+              +item_type("active", whoPage)
+            else if ifPack
+              +item_type("", "pack", "../types_food/")
             else
-              +item_active
+              +item_type
 
-            li.nav-item.dropdown
-              a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-expanded='false')
-                | Готові набори
-              ul.dropdown-menu(aria-labelledby='navbarDropdown')
-                li
-                  a.dropdown-item(href='#') Action
-                li
-                  a.dropdown-item(href='#') Another action
-                li
-                  hr.dropdown-divider
-                li
-                  a.dropdown-item(href='#') Something else here
+
+
+
+
+            mixin item_pack(active, whoPageItem, pathTwo)
+              li.nav-item.dropdown
+                a#navbarDropdown.nav-link.dropdown-toggle(href="#" role="button" data-toggle="dropdown" aria-expanded="false")
+                  | Готові набори
+                ul.dropdown-menu(aria-labelledby="navbarDropdown")
+                  li
+                    if whoPageItem === "pack_coffee"
+                      a.dropdown-item.active(href=`${path}pack_coffee.html`) Набір кофе
+                    else
+                      a.dropdown-item(href=`${path}../pack/pack_coffee.html`) Набір кофе
+                  //- li
+                  //-   if whoPageItem === "pack_coffee"
+                  //-     a.dropdown-item.active(href=`${path}pack_coffee.html`) Набір кофе active
+                  //-   else
+                  //-     a.dropdown-item(href=`${path}../pack/pack_coffee.html`) Набір кофе NO active
+                  
+            if ifPack
+              +item_pack("active", whoPage)
+            else
+              +item_pack
+
+
+
+
           form.d-flex
-            input.form-control.mr-2(type='search' placeholder='Search' aria-label='Search')
-            button.btn.btn-outline-success(type='submit') Search
+            input.form-control.mr-2(type="search" placeholder="Search" aria-label="Search")
+            button.btn.btn-outline-success(type="submit") Search

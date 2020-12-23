@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-html(lang='ua')
+html(lang="ua")
   head
-    include ../parts/_head.pug
+    include ./parts/_head.pug
     +head("../../")
 
   body
@@ -14,12 +14,11 @@ html(lang='ua')
       section.container.py-5
         .row.g-5
           block content
-          //- include ../parts/_card_item.pug
           //- +card_type_item("Jacobs", "100", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_coffee/img_jacobs.jpg")
           //- +card_type_item("Nescafe", "110", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_coffee/img_nescafe.jpg")
 
-    include ../parts/_footer.pug
-    +footer('../../')
+    include ./parts/_footer.pug
+    +footer("../../")
 
-    include ../parts/_scripts.pug
-    +scripts('../../')
+    include ./parts/_scripts.pug
+    +scripts("../../")
