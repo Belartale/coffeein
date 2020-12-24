@@ -22,6 +22,21 @@
 	&--object_contain {
 		object-fit: contain;
 	}
+	&--width {
+		&_70 {
+			width: 70%;
+		}
+		@media (min-width: 768px) {
+			&_sm_50 {
+				width: 50%;
+			}
+		}
+		@media (min-width: 992px) {
+			&_lg_25 {
+				width: 25%;
+			}
+		}
+	}
 }
 
 .img-sm {

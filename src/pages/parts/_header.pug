@@ -3,7 +3,7 @@ mixin header(linksPages, path, whoPage)
   - let ifPack = whoPage === "pack_coffee" || whoPage === "pack_tools" || whoPage === "pack_tea"
 
   header
-    nav.navbar.sticky-top.navbar-expand-md.navbar-dark.bg-dark
+    nav.navbar.sticky-top.navbar-expand-lg.navbar-dark.bg-dark
       .container
         a.navbar-brand(href=`${linksPages.main}index.html`)
           | Coffe
@@ -113,5 +113,5 @@ mixin header(linksPages, path, whoPage)
 
 
           form.d-flex
-            input.form-control.mr-2(type="search" placeholder="Search" aria-label="Search")
-            button.btn.btn-outline-success(type="submit") Search
+            input.form-control.mr-2(type="search" id="inputSearch" placeholder="Search" aria-label="Search")
+            button.btn.btn-outline-success(type="button" id="buttonSearch") Search
