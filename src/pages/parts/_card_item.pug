@@ -9,5 +9,6 @@ mixin card_type_item(title, cost, text, pathImg)
         .row
           .col.d-flex.align-items-center
             p.fst-italic #[span(id=`${title}Cost`) #{cost}] грн.
-          .col.d-flex.justify-content-end
+          .col.d-flex.justify-content-end.col-8
+            input.form-control.form-control-sm.mr-2(id=`${title}Inp` type='text' value='1' aria-label='.form-control-sm example')
             button.btn.btn-primary(id=`${title}Btn`) Купити

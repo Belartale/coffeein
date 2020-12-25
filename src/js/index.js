@@ -1,4 +1,4 @@
-@@include("../../node_modules/bootstrap/dist/js/bootstrap.js");
+@@include("../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js");
 @@include("settings.js");
 @@include("anim_hide.js");
 
@@ -75,51 +75,63 @@ function IfWord(inputWord, words, pathToPage) {
 	});
 }
 
-let dataItems = {
-	store: [],
-	coffee: ["Jacobs", "Nescafe"],
+let store = {
+	typeFood: {
+		coffee: [
+			{
+				name: "Nescafe",
+				cost: 22,
+				text: "lorem lorem lorem lorem lorem lorem",
+				pathImg: "types_food/type_coffee/img_jacobs.jpg",
+			},
+			{
+				name: "Jacobs",
+				cost: 33,
+				text: "jacobs jacobs jacobs jacobs jacobs",
+				pathImg: "types_food/type_coffee/img_nescafe.jpg",
+			},
+		],
+	},
 };
 
-for (const key in dataItems) {
-	if (Object.hasOwnProperty.call(dataItems, key)) {
-		const element = dataItems[key];
+const generateCards = (where, obj) => {
+	const div = `
+		<div class="col col-lg-4">
+			<div class="card">
+				<div class="d-flex justify-content-center p-3">
+					<img class="img img--object_contain" src="../../img/${obj.pathImg}" alt="${obj.name} img" style="height: 12rem; width: 12rem;">
+				</div>
+				<div class="card-body">
+					<h5 class="card-title" id="${obj.name}">${obj.name}</h5>
+					<p class="card-text">${obj.text}</p>
+					<div class="row">
+						<div class="col d-flex justify-items-center">
+							<p class="fst-italic">${obj.cost} грн.</p>
+						</div>
+						<div class="col d-flex justify-content-end col-8">
+							<input class="form-control from-control-sm mr-2" id="${obj.name}Inp" type="text" value="1" aria-label=".form-control-sm example">
+							<button class="btn btn-primary" id="${obj.name}Btn">Купити</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	`;
+	where.insertAdjacentHTML("afterbegin", div);
+};
 
-		dataItems.coffee.forEach((element) => {
-			let idName = document.querySelector(`#${element}Name`);
-			let idCost = document.querySelector(`#${element}Cost`);
-			let idBtn = document.querySelector(`#${element}Btn`);
+store.typeFood.coffee.forEach((element) => {
+	let cardsCoffee = document.querySelector(`#cardsCoffee`);
 
-			idBtn.addEventListener(
-				"click",
-				() => {
-					// console.log(idCost.textContent);
-					dataItems.store.push({
-						name: idName.textContent,
-						cost: idCost.textContent,
-					});
-					console.log("dataItems.store", dataItems.store);
-				},
-				false
-			);
-		});
-	}
-}
+	generateCards(cardsCoffee, element);
 
-// dataItems.coffee.forEach((element) => {
-// 	let idName = document.querySelector(`#${element}Name`);
-// 	let idCost = document.querySelector(`#${element}Cost`);
-// 	let idBtn = document.querySelector(`#${element}Btn`);
+	// console.log(element);
 
-// 	idBtn.addEventListener(
-// 		"click",
-// 		() => {
-// 			console.log(idCost.textContent);
-// 			dataItems.store.push({
-// 				name: idName.textContent,
-// 				cost: idCost.textContent,
-// 			});
-// 			console.log(dataItems.store);
-// 		},
-// 		false
-// 	);
-// });
+	let itemBtn = document.querySelector(`#${element.name}Btn`);
+	let itemInp = document.querySelector(`#${element.name}Inp`);
+
+	itemBtn.addEventListener("click", () => {}, false);
+
+	console.log(itemBtn);
+	console.log(itemInp);
+});
