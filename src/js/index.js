@@ -17,12 +17,18 @@ submit.addEventListener(
 
 let wordsAllFood = {
 	items: {
-		coffee: ["кава", "кофе"],
+		coffee: ["кава", "кофе", "jacobs", "nescafe"],
 		tea: ["чай", "чаї"],
 		syrup: ["сироп", "сиропи"],
 		sweet: ["солодке", "печево"],
 		tools: ["інструменти бариста", "інструменти", "бариста"],
-		cartonCup: ["стакани"],
+		cartonCup: [
+			"стакани",
+			"cклянки пластикові",
+			"cклянки",
+			"пластикові",
+			"бамбукові",
+		],
 	},
 	itemsPack: {},
 };
@@ -68,3 +74,52 @@ function IfWord(inputWord, words, pathToPage) {
 		}
 	});
 }
+
+let dataItems = {
+	store: [],
+	coffee: ["Jacobs", "Nescafe"],
+};
+
+for (const key in dataItems) {
+	if (Object.hasOwnProperty.call(dataItems, key)) {
+		const element = dataItems[key];
+
+		dataItems.coffee.forEach((element) => {
+			let idName = document.querySelector(`#${element}Name`);
+			let idCost = document.querySelector(`#${element}Cost`);
+			let idBtn = document.querySelector(`#${element}Btn`);
+
+			idBtn.addEventListener(
+				"click",
+				() => {
+					// console.log(idCost.textContent);
+					dataItems.store.push({
+						name: idName.textContent,
+						cost: idCost.textContent,
+					});
+					console.log("dataItems.store", dataItems.store);
+				},
+				false
+			);
+		});
+	}
+}
+
+// dataItems.coffee.forEach((element) => {
+// 	let idName = document.querySelector(`#${element}Name`);
+// 	let idCost = document.querySelector(`#${element}Cost`);
+// 	let idBtn = document.querySelector(`#${element}Btn`);
+
+// 	idBtn.addEventListener(
+// 		"click",
+// 		() => {
+// 			console.log(idCost.textContent);
+// 			dataItems.store.push({
+// 				name: idName.textContent,
+// 				cost: idCost.textContent,
+// 			});
+// 			console.log(dataItems.store);
+// 		},
+// 		false
+// 	);
+// });

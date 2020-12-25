@@ -1,49 +1,37 @@
-<!DOCTYPE html>
-html(lang='ua')
-  head
-    include ./parts/_head.pug
-    +head("../")
+extends ./template_first_page.pug
 
-  body
+block header
+  include ./parts/_header.pug
+  +header(linksPages, "./types_food/", "delivery")
 
-    - let linksPages = {main: "../", delivery: "./"}
-    include ./parts/_header.pug
-    +header(linksPages, "./types_food/", "delivery")
-
-    main
-      section.container.py-5
-        article.card
-          .card-body
-            h5.caption__title.anim_items.anim_no_hide &Scy;&mcy;&acy;&chcy;&ncy;&acy; &yicy;&zhcy;&acy; &zcy; &dcy;&ocy;&scy;&tcy;&acy;&vcy;&kcy;&ocy;&yucy; &ncy;&acy; &scy;&vcy;&apos;&yacy;&tcy;&acy;
-            .row.g-5
-              .col-12
-                .card__item.anim_items.anim_no_hide
-                  img.img_anim.img--width_70.img--width_sm_50.img--width_lg_25.float-md-right.ml-3(src='../img/img_delivery_item_burger.jpg' alt='')
-                  p.card-text.caption__text.anim_items.anim_no_hide
-                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt
-                    | iste eius, saepe tenetur enim, suscipit totam quaerat ipsam
-                    | ipsum corrupti facilis aliquid sed consequuntur, explicabo
-                    | sapiente fugit expedita at veniam? Cum illo ipsum cupiditate
-                    | excepturi quae officiis minus fugit modi, inventore, enim
-                    | dolor odit animi? Accusantium repellat incidunt explicabo
-                    | dolorum!
-              .col-12
-                .card__item.anim_items.anim_no_hide
-                  img.img_anim.img--width_70.img--width_sm_50.img--width_lg_25.float-md-left.mr-3(src='../img/img_delivery_item_sweet.jpg' alt='')
-                  p.card-text.caption__text.anim_items.anim_no_hide
-                    | Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum
-                    | debitis quia inventore unde blanditiis odio ab dolores
-                    | quibusdam voluptates nostrum culpa, a necessitatibus repellat
-                    | aspernatur aliquid dolore eveniet, ratione placeat reiciendis
-                    | nemo. Voluptatibus tenetur quod fugiat non ducimus? Autem
-                    | veritatis maiores tempore ut dicta dolorum commodi, ipsum
-                    | praesentium. Velit cupiditate et harum accusantium iusto esse
-                    | odit ea impedit non unde reiciendis eius voluptatibus illo,
-                    | quae minima aspernatur neque similique at?
-
-    
-    include ./parts/_footer.pug
-    +footer('../')
-
-    include ./parts/_scripts.pug
-    +scripts('../')
+block content
+  main
+    section.container.py-5
+      article.card
+        .card-body
+          h5.caption__title.anim_items.anim_no_hide &Scy;&mcy;&acy;&chcy;&ncy;&acy; &yicy;&zhcy;&acy; &zcy; &dcy;&ocy;&scy;&tcy;&acy;&vcy;&kcy;&ocy;&yucy; &ncy;&acy; &scy;&vcy;&apos;&yacy;&tcy;&acy;
+          .row.g-5
+            .col-12
+              .card__item.anim_items.anim_no_hide
+                img.img_anim.img--width_70.img--width_sm_50.img--width_lg_25.float-md-right.ml-3(src='../img/img_delivery_item_burger.jpg' alt='')
+                p.card-text.caption__text.anim_items.anim_no_hide
+                  | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt
+                  | iste eius, saepe tenetur enim, suscipit totam quaerat ipsam
+                  | ipsum corrupti facilis aliquid sed consequuntur, explicabo
+                  | sapiente fugit expedita at veniam? Cum illo ipsum cupiditate
+                  | excepturi quae officiis minus fugit modi, inventore, enim
+                  | dolor odit animi? Accusantium repellat incidunt explicabo
+                  | dolorum!
+            .col-12
+              .card__item.anim_items.anim_no_hide
+                img.img_anim.img--width_70.img--width_sm_50.img--width_lg_25.float-md-left.mr-3(src='../img/img_delivery_item_sweet.jpg' alt='')
+                p.card-text.caption__text.anim_items.anim_no_hide
+                  | Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum
+                  | debitis quia inventore unde blanditiis odio ab dolores
+                  | quibusdam voluptates nostrum culpa, a necessitatibus repellat
+                  | aspernatur aliquid dolore eveniet, ratione placeat reiciendis
+                  | nemo. Voluptatibus tenetur quod fugiat non ducimus? Autem
+                  | veritatis maiores tempore ut dicta dolorum commodi, ipsum
+                  | praesentium. Velit cupiditate et harum accusantium iusto esse
+                  | odit ea impedit non unde reiciendis eius voluptatibus illo,
+                  | quae minima aspernatur neque similique at?

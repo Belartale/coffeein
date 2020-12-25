@@ -4,10 +4,10 @@ mixin card_type_item(title, cost, text, pathImg)
       .d-flex.justify-content-center.p-3
         img.img.img--object_contain(src=`../../img/${pathImg}` alt=`${title} img` style='height: 12rem; width: 12rem;')
       .card-body
-        h5.card-title #{title}
+        h5.card-title(id=`${title}Name`) #{title}
         p.card-text #{text}
         .row
           .col.d-flex.align-items-center
-            p.fst-italic #{cost} грн.
+            p.fst-italic #[span(id=`${title}Cost`) #{cost}] грн.
           .col.d-flex.justify-content-end
-            a.btn.btn-primary(href='#') Купити
+            button.btn.btn-primary(id=`${title}Btn`) Купити

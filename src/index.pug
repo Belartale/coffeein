@@ -5,14 +5,8 @@ html(lang='ua')
     +head("./")
     
   body
-    //- - let typeCoffee = "./pages/types_food/type_coffee.html"
-    //- - let typeTea = "./pages/types_food/type_tea.html" 
-    //- - let typeSyrup = "./pages/types_food/type_syrup.html"
-    //- - let typeSweet = "./pages/types_food/type_sweet.html"
-    //- - let typeTools = "./pages/types_food/type_tools.html"
-    //- - let typeCartonCup = "./pages/types_food/type_carton_cup.html"
     
-    - let linksPages = {main: "./", delivery: "./pages/" }
+    - let linksPages = {main: "./", delivery: "./pages/", about: "./pages/"}
 
     include ./pages/parts/_header.pug
     +header(linksPages, "./pages/types_food/", "index")

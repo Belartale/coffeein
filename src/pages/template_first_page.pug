@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+html(lang="ua")
+  head
+    include ./parts/_head.pug
+    +head("../")
+
+  body
+
+    - let linksPages = {main: "../", delivery: "./", about: "./"}
+    block header
+      //- +header(linksPages, "./", "type_coffee")
+
+    block content
+
+          //- +card_type_item("Jacobs", "100", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_coffee/img_jacobs.jpg")
+          //- +card_type_item("Nescafe", "110", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, eligendi!", "type_coffee/img_nescafe.jpg")
+
+    include ./parts/_footer.pug
+    +footer("../")
+
+    include ./parts/_scripts.pug
+    +scripts("../")

@@ -33,8 +33,10 @@ mixin header(linksPages, path, whoPage)
                   li
                     if whoPageItem === "type_coffee"
                       a.dropdown-item.active(href=`${path}type_coffee.html`) Кава
+                                              //-   ./
                     else if whoPageItem === "pack"
                       a.dropdown-item(href=`${path}${pathTwo}type_coffee.html`) Кава
+                                        //-   ./../types_food/
                     else
                       a.dropdown-item(href=`${path}type_coffee.html`) Кава
                   li
@@ -74,18 +76,15 @@ mixin header(linksPages, path, whoPage)
                       a.dropdown-item(href=`${path}type_carton_cup.html`) Стаканчики і додаткові товари
             if ifType
               +item_type("active", whoPage)
+              //-                 type_coffee
             else if ifPack
               +item_type("", "pack", "../types_food/")
             else
               +item_type
 
-
-
-
-
-            mixin item_pack(active, whoPageItem, pathTwo)
+            mixin item_pack(active, whoPageItem)
               li.nav-item.dropdown
-                a#navbarDropdown.nav-link.dropdown-toggle(href="#" role="button" data-toggle="dropdown" aria-expanded="false")
+                a#navbarDropdown.nav-link.dropdown-toggle(class=active href="#" role="button" data-toggle="dropdown" aria-expanded="false")
                   | Готові набори
                 ul.dropdown-menu(aria-labelledby="navbarDropdown")
                   li
@@ -109,6 +108,11 @@ mixin header(linksPages, path, whoPage)
             else
               +item_pack
 
+            li.n1av-item
+              if whoPage === "about"
+                a.nav-link.active(href=`${linksPages.about}about.html`) Про нас
+              else
+                a.nav-link(href=`${linksPages.about}about.html`) Про нас
 
 
 
