@@ -2,6 +2,8 @@
 @@include("settings.js");
 @@include("anim_hide.js");
 
+console.log("JavaScript START");
+
 const search = inputSearch;
 const submit = buttonSearch;
 
@@ -110,7 +112,7 @@ const generateCards = (where, obj) => {
 						</div>
 						<div class="col d-flex justify-content-end col-8">
 							<input class="form-control from-control-sm mr-2" id="${obj.name}Inp" type="text" value="1" aria-label=".form-control-sm example">
-							<button class="btn btn-primary" id="${obj.name}Btn">Купити</button>
+							<button class="btn btn-primary addLocalStorageBtn" id="${obj.name}Btn">Купити</button>
 						</div>
 					</div>
 				</div>
@@ -127,11 +129,42 @@ store.typeFood.coffee.forEach((element) => {
 
 	// console.log(element);
 
-	let itemBtn = document.querySelector(`#${element.name}Btn`);
-	let itemInp = document.querySelector(`#${element.name}Inp`);
+	let IdItemBtn = document.querySelector(`#${element.name}Btn`);
+	let IdItemInp = document.querySelector(`#${element.name}Inp`);
+	let itemAddBtn = document.querySelector(`.addLocalStorageBtn`);
 
-	itemBtn.addEventListener("click", () => {}, false);
+	IdItemBtn.addEventListener(
+		"click",
+		() => {
+			addLocalStorage("items", [
+				{ name: "element.name", cost: "element.cost" },
+			]);
 
-	console.log(itemBtn);
-	console.log(itemInp);
+			let r = getLocalStorage("items");
+			console.log(r);
+		},
+		false
+	);
+
+	// console.log(IdItemBtn);
+	// console.log(IdItemInp);
 });
+
+function getLocalStorage(key) {
+	return localStorage.getItem(key);
+}
+function addLocalStorage(name, key) {
+	keyy = JSON.stringify(key);
+	localStorage.setItem(name, keyy);
+}
+function pushLocalStorage(name, key) {
+	localStorage.setItem(name, key);
+}
+
+// get LS
+// arr push from LS == FULL ARR
+
+// give arr to LS
+
+// ael or func
+// [add]
