@@ -136,12 +136,10 @@ store.typeFood.coffee.forEach((element) => {
 	IdItemBtn.addEventListener(
 		"click",
 		() => {
-			addLocalStorage("items", [
-				{ name: "element.name", cost: "element.cost" },
-			]);
+			localStorage.clear(); //! ! ! ! ! CLEAR LOCAL STORAGE
+			addLocalStorage("items", [{ name: element.name, cost: element.cost }]);
 
-			let r = getLocalStorage("items");
-			console.log(r);
+			console.log(getLocalStorage("items"));
 		},
 		false
 	);
@@ -154,6 +152,7 @@ function getLocalStorage(key) {
 	return localStorage.getItem(key);
 }
 function addLocalStorage(name, key) {
+	// todo getLocalStorage(key)
 	keyy = JSON.stringify(key);
 	localStorage.setItem(name, keyy);
 }
