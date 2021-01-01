@@ -122,6 +122,8 @@ const generateCards = (where, obj) => {
 	where.insertAdjacentHTML("afterbegin", div);
 };
 
+// console.log(localStorage.length);
+
 store.typeFood.coffee.forEach((element) => {
 	let cardsCoffee = document.querySelector(`#cardsCoffee`);
 
@@ -136,8 +138,11 @@ store.typeFood.coffee.forEach((element) => {
 	IdItemBtn.addEventListener(
 		"click",
 		() => {
-			localStorage.clear(); //! ! ! ! ! CLEAR LOCAL STORAGE
+			// localStorage.clear(); //! ! ! ! ! CLEAR LOCAL STORAGE
+			console.log(localStorage.length);
 			addLocalStorage("items", [{ name: element.name, cost: element.cost }]);
+
+			//
 
 			console.log(getLocalStorage("items"));
 		},
@@ -148,16 +153,19 @@ store.typeFood.coffee.forEach((element) => {
 	// console.log(IdItemInp);
 });
 
-function getLocalStorage(key) {
-	return localStorage.getItem(key);
+function getLocalStorage(name) {
+	return localStorage.getItem(name);
 }
-function addLocalStorage(name, key) {
-	// todo getLocalStorage(key)
-	keyy = JSON.stringify(key);
-	localStorage.setItem(name, keyy);
+function addLocalStorage(name, data) {
+	let getName = getLocalStorage(name);
+
+	getName.push(data);
+
+	dataJ = JSON.stringify(data);
+	localStorage.setItem(name, dataJ);
 }
-function pushLocalStorage(name, key) {
-	localStorage.setItem(name, key);
+function pushLocalStorage(name, data) {
+	localStorage.setItem(name, data);
 }
 
 // get LS
