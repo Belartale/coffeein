@@ -1,13 +1,6 @@
 // @@include("name")
 // files from -name.html don't save in folder "dist"
 
-// npm i -D gulp-
-
-// task for start
-// gulp s == svg sprite
-// gulp f == font
-// gulp d == delete class inside css of html
-
 let project_folder = "dist"; //require("path").basename(__dirname);
 let source_folder = "src"; //"#src";
 
@@ -168,6 +161,17 @@ function css() {
 function js() {
   return src(path.src.js)
     .pipe(fileInclude())
+    .pipe(
+      rename({
+        extname: ".min.js",
+      })
+    )
+    .pipe(dest(path.build.js))
+    .pipe(browsersync.stream());
+}
+function jsDist() {
+  return src(path.src.js)
+    .pipe(fileInclude())
     .pipe(uglify())
     .pipe(
       rename({
@@ -257,13 +261,12 @@ function cleanClassOfHtml() {
 }
 gulp.task("cleanClass", cleanClassOfHtml);
 
-gulp.task("d", cleanClassOfHtml);
-
 gulp.task(
   "dist",
   gulp.series(
     pugDist,
     htmlDist,
+    jsDist,
     imgsDist,
     cleanClassOfHtml,
     fontToTtf,
@@ -326,6 +329,7 @@ let build = gulp.series(
 let watch = gulp.parallel(build, browserSync, watchFiles); //after
 
 exports.pugFunc = pugFunc;
+exports.pugDist = pugDist;
 exports.plugins = plugins;
 exports.fontsStyle = fontsStyle;
 exports.fonts = fonts;
@@ -335,6 +339,7 @@ exports.svgSprite = svgSprite;
 exports.js = js;
 exports.css = css;
 exports.html = html;
+exports.htmlDist = htmlDist;
 exports.build = build;
 exports.watch = watch;
 exports.default = watch;

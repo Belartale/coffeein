@@ -2,8 +2,6 @@
 @@include("settings.js");
 @@include("anim_hide.js");
 
-console.log("JavaScript START");
-
 const search = inputSearch;
 const submit = buttonSearch;
 
@@ -111,6 +109,7 @@ let store = {
 };
 
 const generateCards = (where, obj) => {
+  console.log("where", where);
   const div = `
 		<div class="col col-lg-4">
 			<div class="card">
@@ -141,22 +140,37 @@ const generateCards = (where, obj) => {
 let everyOneFromTypeFood = store.typeFood;
 
 for (let key in everyOneFromTypeFood) {
-  console.log("key", key); // просто название
-  console.log("everyOneFromTypeFood", everyOneFromTypeFood);
+  // coofeee    tea
 
-  const element = everyOneFromTypeFood[key];
+  console.log("key", everyOneFromTypeFood[key]);
 
-  console.log("element", element);
-  let a = key;
-  creatCard(element);
+  // console.log("key", key); // просто название
+
+  // if (key === "coffee") {
+  //   console.log("yyyyyyyy");
+  // } else {
+  //   console.log("noo");
+  // }
+
+  let element = everyOneFromTypeFood[key];
+
+  creatCard(element, key);
 }
 
-function creatCard(params) {
-  params.forEach((element) => {
-    // let cardsCoffee = document.querySelector(`#cardsCoffee`);
-    let cardsCoffee = document.querySelector(`#cards${a}`);
+function creatCard(element, key) {
+  element.forEach((element) => {
+    let card = document.querySelector(`#cards${key}`);
 
-    generateCards(cardsCoffee, element); //! creat card
+    // generateCards(card, element); //! creat card
+    if (key === "coffee") {
+      generateCards(card, element); //! creat card
+      console.log("coooooooooooooooooooooooooooo");
+    } else if (key === "tea") {
+      generateCards(card, element); //! creat card
+      console.log("teeeeeeeeeeeeeeeeeeeeeaaaaaaaaaa");
+    } else {
+      console.log("error");
+    }
 
     let IdItemBtn = document.querySelector(`#${element.name}Btn`);
     let IdItemInp = document.querySelector(`#${element.name}Inp`);
