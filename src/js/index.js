@@ -10,94 +10,108 @@ const submit = buttonSearch;
 const path = "http://localhost:3000/";
 
 submit.addEventListener(
-	"click",
-	() => {
-		searchPage(search.value.toLowerCase());
-	},
-	false
+  "click",
+  () => {
+    searchPage(search.value.toLowerCase());
+  },
+  false
 );
 
 let wordsAllFood = {
-	items: {
-		coffee: ["кава", "кофе", "jacobs", "nescafe"],
-		tea: ["чай", "чаї"],
-		syrup: ["сироп", "сиропи"],
-		sweet: ["солодке", "печево"],
-		tools: ["інструменти бариста", "інструменти", "бариста"],
-		cartonCup: [
-			"стакани",
-			"cклянки пластикові",
-			"cклянки",
-			"пластикові",
-			"бамбукові",
-		],
-	},
-	itemsPack: {},
+  items: {
+    coffee: ["кава", "кофе", "jacobs", "nescafe"],
+    tea: ["чай", "чаї"],
+    syrup: ["сироп", "сиропи"],
+    sweet: ["солодке", "печево"],
+    tools: ["інструменти бариста", "інструменти", "бариста"],
+    cartonCup: [
+      "стакани",
+      "cклянки пластикові",
+      "cклянки",
+      "пластикові",
+      "бамбукові",
+    ],
+  },
+  itemsPack: {},
 };
 
 function searchPage(word) {
-	checkWords(word);
+  checkWords(word);
 }
 
 function checkWords(inputWord) {
-	IfWord(
-		inputWord,
-		wordsAllFood.items.coffee,
-		"pages/types_food/type_coffee.html"
-	);
-	IfWord(inputWord, wordsAllFood.items.tea, "pages/types_food/type_tea.html");
-	IfWord(
-		inputWord,
-		wordsAllFood.items.syrup,
-		"pages/types_food/type_syrup.html"
-	);
-	IfWord(
-		inputWord,
-		wordsAllFood.items.sweet,
-		"pages/types_food/type_sweet.html"
-	);
-	IfWord(
-		inputWord,
-		wordsAllFood.items.tools,
-		"pages/types_food/type_tools.html"
-	);
-	IfWord(
-		inputWord,
-		wordsAllFood.items.cartonCup,
-		"pages/types_food/type_carton_cup.html"
-	);
+  IfWord(
+    inputWord,
+    wordsAllFood.items.coffee,
+    "pages/types_food/type_coffee.html"
+  );
+  IfWord(inputWord, wordsAllFood.items.tea, "pages/types_food/type_tea.html");
+  IfWord(
+    inputWord,
+    wordsAllFood.items.syrup,
+    "pages/types_food/type_syrup.html"
+  );
+  IfWord(
+    inputWord,
+    wordsAllFood.items.sweet,
+    "pages/types_food/type_sweet.html"
+  );
+  IfWord(
+    inputWord,
+    wordsAllFood.items.tools,
+    "pages/types_food/type_tools.html"
+  );
+  IfWord(
+    inputWord,
+    wordsAllFood.items.cartonCup,
+    "pages/types_food/type_carton_cup.html"
+  );
 }
 
 function IfWord(inputWord, words, pathToPage) {
-	words.forEach((element) => {
-		let word = inputWord.indexOf(element);
-		if (word >= 0) {
-			location.href = `${path}${pathToPage}`;
-		}
-	});
+  words.forEach((element) => {
+    let word = inputWord.indexOf(element);
+    if (word >= 0) {
+      location.href = `${path}${pathToPage}`;
+    }
+  });
 }
 
 let store = {
-	typeFood: {
-		coffee: [
-			{
-				name: "Nescafe",
-				cost: 22,
-				text: "lorem lorem lorem lorem lorem lorem",
-				pathImg: "types_food/type_coffee/img_jacobs.jpg",
-			},
-			{
-				name: "Jacobs",
-				cost: 33,
-				text: "jacobs jacobs jacobs jacobs jacobs",
-				pathImg: "types_food/type_coffee/img_nescafe.jpg",
-			},
-		],
-	},
+  typeFood: {
+    coffee: [
+      {
+        name: "Nescafe",
+        cost: 22,
+        text: "lorem lorem lorem lorem lorem lorem",
+        pathImg: "types_food/type_coffee/img_jacobs.jpg",
+      },
+      {
+        name: "Jacobs",
+        cost: 33,
+        text: "jacobs jacobs jacobs jacobs jacobs",
+        pathImg: "types_food/type_coffee/img_nescafe.jpg",
+      },
+    ],
+    tea: [
+      {
+        name: "Tea green",
+        cost: 22,
+        text: "lorem lorem lorem lorem lorem lorem",
+        pathImg: "types_food/type_tea/img_green.jpg",
+      },
+      {
+        name: "Tea green 222222",
+        cost: 22,
+        text: "lorem lorem lorem lorem lorem lorem",
+        pathImg: "types_food/type_tea/img_green.jpg",
+      },
+    ],
+  },
 };
 
 const generateCards = (where, obj) => {
-	const div = `
+  const div = `
 		<div class="col col-lg-4">
 			<div class="card">
 				<div class="d-flex justify-content-center p-3">
@@ -119,53 +133,64 @@ const generateCards = (where, obj) => {
 			</div>
 		</div>
 	`;
-	where.insertAdjacentHTML("afterbegin", div);
+  where.insertAdjacentHTML("afterbegin", div);
 };
 
 // console.log(localStorage.length);
 
-store.typeFood.coffee.forEach((element) => {
-	let cardsCoffee = document.querySelector(`#cardsCoffee`);
+let everyOneFromTypeFood = store.typeFood;
 
-	generateCards(cardsCoffee, element);
+for (let key in everyOneFromTypeFood) {
+  console.log("key", key); // просто название
+  console.log("everyOneFromTypeFood", everyOneFromTypeFood);
 
-	// console.log(element);
+  const element = everyOneFromTypeFood[key];
 
-	let IdItemBtn = document.querySelector(`#${element.name}Btn`);
-	let IdItemInp = document.querySelector(`#${element.name}Inp`);
-	let itemAddBtn = document.querySelector(`.addLocalStorageBtn`);
+  console.log("element", element);
+  let a = key;
+  creatCard(element);
+}
 
-	IdItemBtn.addEventListener(
-		"click",
-		() => {
-			// localStorage.clear(); //! ! ! ! ! CLEAR LOCAL STORAGE
-			console.log(localStorage.length);
-			addLocalStorage("items", [{ name: element.name, cost: element.cost }]);
+function creatCard(params) {
+  params.forEach((element) => {
+    // let cardsCoffee = document.querySelector(`#cardsCoffee`);
+    let cardsCoffee = document.querySelector(`#cards${a}`);
 
-			//
+    generateCards(cardsCoffee, element); //! creat card
 
-			console.log(getLocalStorage("items"));
-		},
-		false
-	);
+    let IdItemBtn = document.querySelector(`#${element.name}Btn`);
+    let IdItemInp = document.querySelector(`#${element.name}Inp`);
+    let itemAddBtn = document.querySelector(`.addLocalStorageBtn`);
 
-	// console.log(IdItemBtn);
-	// console.log(IdItemInp);
-});
+    IdItemBtn.addEventListener(
+      "click",
+      () => {
+        // localStorage.clear(); //! ! ! ! ! CLEAR LOCAL STORAGE
+        console.log(localStorage.length);
+        addLocalStorage("items", [{ name: element.name, cost: element.cost }]);
+
+        //
+
+        console.log(getLocalStorage("items"));
+      },
+      false
+    );
+  });
+}
 
 function getLocalStorage(name) {
-	return localStorage.getItem(name);
+  return localStorage.getItem(name);
 }
 function addLocalStorage(name, data) {
-	let getName = getLocalStorage(name);
+  let getName = getLocalStorage(name);
 
-	getName.push(data);
+  getName.push(data);
 
-	dataJ = JSON.stringify(data);
-	localStorage.setItem(name, dataJ);
+  dataJ = JSON.stringify(data);
+  localStorage.setItem(name, dataJ);
 }
 function pushLocalStorage(name, data) {
-	localStorage.setItem(name, data);
+  localStorage.setItem(name, data);
 }
 
 // get LS
