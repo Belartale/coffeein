@@ -7,6 +7,9 @@ const submit = buttonSearch;
 
 const path = "http://localhost:3000/";
 
+//!!!!!!!!!!!!!!!!!!!
+localStorage.clear();
+
 submit.addEventListener(
   "click",
   () => {
@@ -91,25 +94,11 @@ let store = {
         pathImg: "types_food/type_coffee/img_nescafe.jpg",
       },
     ],
-    tea: [
-      {
-        name: "Tea green",
-        cost: 22,
-        text: "lorem lorem lorem lorem lorem lorem",
-        pathImg: "types_food/type_tea/img_green.jpg",
-      },
-      {
-        name: "Tea green 222222",
-        cost: 22,
-        text: "lorem lorem lorem lorem lorem lorem",
-        pathImg: "types_food/type_tea/img_green.jpg",
-      },
-    ],
   },
 };
 
 const generateCards = (where, obj) => {
-  console.log("where", where);
+  // console.log("where", where);
   const div = `
 		<div class="col col-lg-4">
 			<div class="card">
@@ -135,22 +124,10 @@ const generateCards = (where, obj) => {
   where.insertAdjacentHTML("afterbegin", div);
 };
 
-// console.log(localStorage.length);
-
 let everyOneFromTypeFood = store.typeFood;
 
 for (let key in everyOneFromTypeFood) {
-  // coofeee    tea
-
-  console.log("key", everyOneFromTypeFood[key]);
-
-  // console.log("key", key); // просто название
-
-  // if (key === "coffee") {
-  //   console.log("yyyyyyyy");
-  // } else {
-  //   console.log("noo");
-  // }
+  // console.log("key", everyOneFromTypeFood[key]);
 
   let element = everyOneFromTypeFood[key];
 
@@ -161,13 +138,9 @@ function creatCard(element, key) {
   element.forEach((element) => {
     let card = document.querySelector(`#cards${key}`);
 
-    // generateCards(card, element); //! creat card
     if (key === "coffee") {
-      generateCards(card, element); //! creat card
-      console.log("coooooooooooooooooooooooooooo");
-    } else if (key === "tea") {
-      generateCards(card, element); //! creat card
-      console.log("teeeeeeeeeeeeeeeeeeeeeaaaaaaaaaa");
+      generateCards(card, element);
+      console.log("created cards of coffee");
     } else {
       console.log("error");
     }
@@ -180,12 +153,10 @@ function creatCard(element, key) {
       "click",
       () => {
         // localStorage.clear(); //! ! ! ! ! CLEAR LOCAL STORAGE
-        console.log(localStorage.length);
-        addLocalStorage("items", [{ name: element.name, cost: element.cost }]);
+        // console.log("LS length >>>", localStorage.length);
+        addLocalStorage("items", { name: element.name, cost: element.cost });
 
-        //
-
-        console.log(getLocalStorage("items"));
+        // console.log("LS >>>", localStorage.getItem("items"));
       },
       false
     );
@@ -193,24 +164,28 @@ function creatCard(element, key) {
 }
 
 function getLocalStorage(name) {
-  return localStorage.getItem(name);
+  let data = localStorage.getItem(name);
+  return JSON.parse(data);
 }
 function addLocalStorage(name, data) {
-  let getName = getLocalStorage(name);
+  let dataPar = getLocalStorage(name);
 
-  getName.push(data);
+  if (dataPar === null) {
+    dataPar = new Array();
+    dataPar.push(data);
+    LocalStorage(dataPar);
+  } else {
+    dataPar.push(data);
+    LocalStorage(dataPar);
+  }
+  console.log("LS >>>>>", getLocalStorage("items"));
 
-  dataJ = JSON.stringify(data);
-  localStorage.setItem(name, dataJ);
+  function LocalStorage(dataPar) {
+    let dataStr = JSON.stringify(dataPar);
+    localStorage.setItem(name, dataStr);
+  }
 }
+
 function pushLocalStorage(name, data) {
   localStorage.setItem(name, data);
 }
-
-// get LS
-// arr push from LS == FULL ARR
-
-// give arr to LS
-
-// ael or func
-// [add]
