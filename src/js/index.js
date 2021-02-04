@@ -1,6 +1,6 @@
-@@include("../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js");
-@@include("settings.js");
+@@include("../../node_modules/bootstrap/dist/js/bootstrap.bundle.js");
 @@include("anim_hide.js");
+@@include("settings.js");
 
 const search = inputSearch;
 const submit = buttonSearch;
@@ -163,7 +163,7 @@ function creatCard(element, key) {
   });
 }
 
-function getLocalStorage(name) {
+function getLocalStorage(name = "items") {
   let data = localStorage.getItem(name);
   return JSON.parse(data);
 }
@@ -189,3 +189,12 @@ function addLocalStorage(name, data) {
 function pushLocalStorage(name, data) {
   localStorage.setItem(name, data);
 }
+
+cartBtn.addEventListener(
+  "click",
+  (params) => {
+    params.preventDefault();
+    console.log("cartInfo ! ! !");
+  },
+  false
+);
