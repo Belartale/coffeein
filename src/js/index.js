@@ -195,6 +195,23 @@ cartBtn.addEventListener(
   (params) => {
     params.preventDefault();
     console.log("cartInfo ! ! !");
+
+    if (getLocalStorage() == null) {
+      const cartEmpty = `<p id="cartEmpty">Кошик пуст!!!!!!!ий</p>`;
+      cartItems.insertAdjacentHTML("beforeend", cartEmpty);
+    } else if (getLocalStorage() != null) {
+      cartEmpty.parentNode.removeChild(cartEmpty);
+    }
+
+    getLocalStorage().forEach((data) => {
+      const div = `
+        <div class="row">
+          <p class="col">${data.name}</p>
+          <p class="col">${data.cost}</p>
+        </div>
+      `;
+      cartItems.insertAdjacentHTML("beforeend", div);
+    });
   },
   false
 );
